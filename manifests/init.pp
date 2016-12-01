@@ -31,6 +31,9 @@
 class vault_config {
 
   require admin_dir_setup
+  require addrepo
+  require nodesetup::bind
+  require consul_ka
 
   $cdadmin_path = "/opt/cdadmin/bin"
 
