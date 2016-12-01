@@ -36,12 +36,32 @@ class vault_config {
 
   $vault_binary_file = "vault_0.6.2_linux_amd64.zip"
 
+  file {'unzip_install_script':
+    ensure  => 'file',
+    path    => "${cdadmin_path}/install_unzip.sh",
+    owner   => 'puppet',
+    group   => 'puppet',
+    mode    => '0755',
+    notify  => Exec['run_unzip'],
+    content => '#!/bin/bash
+export http_proxy=http://proxyserver.mutualofomaha.com:8080
+export proxy=http://proxyserver.mutualofomaha.com:8080
+echo "proxy=http://proxyserver.mutualofomaha.com:8080" >> /etc/yum.conf
+yum -y install unzip
+export VAULT_ADDR=http://127.0.0.1:8200',
+  } ->
+  exec {'run_unzip':
+    command     => "${cdadmin_path}/install_unzip.sh",
+    refreshonly => true,
+    path        => '/usr/bin/:/bin/:/usr/local/bin/',
+  } ->
+
   file {"${cdadmin_path}/${vault_binary_file}":
     ensure => 'present',
     owner  => 'puppet',
     group  => 'puppet',
     source => 'puppet:///modules/vault_config/$vault_binary_file',
-    mode   => '0644',
+    mode   => '0755',
   } ->
 
   exec { 'install_vault':
