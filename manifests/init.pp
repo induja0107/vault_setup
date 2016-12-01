@@ -50,7 +50,7 @@ class vault_config {
 export http_proxy=http://proxyserver.mutualofomaha.com:8080
 export proxy=http://proxyserver.mutualofomaha.com:8080
 echo "proxy=http://proxyserver.mutualofomaha.com:8080" >> /etc/yum.conf
-yum -y install unzip
+sudo yum -y install unzip
 export VAULT_ADDR=http://127.0.0.1:8200',
   } ->
   exec {'run_unzip':
@@ -68,7 +68,7 @@ export VAULT_ADDR=http://127.0.0.1:8200',
   } ->
 
   exec { 'install_vault':
-    command   => "unzip $cdadmin_path/${vault_binary_file} -d /usr/bin && touch ${cdadmin_path}/one_time_install",
+    command   => "sudo unzip $cdadmin_path/${vault_binary_file} -d /usr/bin && touch ${cdadmin_path}/one_time_install",
     subscribe => File[$vault_binary_file],
     path      => '/usr/bin/:/bin/:/usr/local/bin/',
     creates   => '${cdadmin_path}/one_time_install',
