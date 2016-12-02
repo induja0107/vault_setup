@@ -42,8 +42,8 @@ class vault_config {
   file {'unzip_install_script':
     ensure  => 'file',
     path    => "${cdadmin_path}/install_unzip.sh",
-    owner   => 'puppet',
-    group   => 'puppet',
+    owner   => 'nobody',
+    group   => 'root',
     mode    => '0755',
     notify  => Exec['run_unzip'],
     content => '#!/bin/bash
@@ -61,8 +61,8 @@ export VAULT_ADDR=http://127.0.0.1:8200',
 
   file {"${cdadmin_path}/${vault_binary_file}":
     ensure => 'present',
-    owner  => 'puppet',
-    group  => 'puppet',
+    owner  => 'nobody',
+    group  => 'root',
     source => 'puppet:///modules/vault_config/$vault_binary_file',
     mode   => '0755',
   } ->
@@ -76,8 +76,8 @@ export VAULT_ADDR=http://127.0.0.1:8200',
   file {"${cdadmin_path}/vault-config.hcl":
     ensure  => 'present',
     mode    => '0644',
-    owner   => 'puppet',
-    group   => 'puppet',
+    owner   => 'root',
+    group   => 'root',
     content => template("vault_config/vault_server_config.erb"),
   }
 }

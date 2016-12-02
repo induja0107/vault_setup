@@ -1,0 +1,20 @@
+fixtures:
+  repositories:
+    addrepo: "ssh://bitbucket.mutualofomaha.com:7999/pup/addrepo.git"
+    nodesetup: "ssh://bitbucket.mutualofomaha.com:7999/pup/nodesetup.git"
+    stdlib:
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+      ref: 4.12.0
+      #flags: --single-branch
+    admin_dir_setup:
+      repo: "ssh://bitbucket.mutualofomaha.com:7999/pup/admin_dir_setup.git"
+      ref: master
+    consul_ka:
+      repo: "ssh://bitbucket.mutualofomaha.com:7999/pup/consul_ka.git"
+      ref: master
+  forge_modules:
+    bind: "thias/bind"
+    dnsclient: "ghoneycutt/dnsclient"
+    consul: "KyleAnderson/consul"
+  symlinks:
+    profile: "#{source_dir}"
