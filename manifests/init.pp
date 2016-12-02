@@ -69,7 +69,7 @@ export VAULT_ADDR=http://127.0.0.1:8200',
 
   exec { 'install_vault':
     command   => "sudo unzip $cdadmin_path/${vault_binary_file} -d /usr/bin && touch ${cdadmin_path}/one_time_install",
-    subscribe => File[$vault_binary_file],
+    subscribe => File["${cdadmin_path}/${vault_binary_file}"],
     path      => '/usr/bin/:/bin/:/usr/local/bin/',
     creates   => "${cdadmin_path}/one_time_install",
   } ->
