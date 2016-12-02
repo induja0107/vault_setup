@@ -63,7 +63,7 @@ export VAULT_ADDR=http://127.0.0.1:8200',
     ensure => 'present',
     owner  => 'nobody',
     group  => 'root',
-    source => 'puppet:///modules/vault_config/$vault_binary_file',
+    source => "puppet:///modules/vault_config/$vault_binary_file",
     mode   => '0755',
   } ->
 
