@@ -21,7 +21,7 @@
 # Authors
 # -------
 #
-# Induja Vijayaragavan <induja.vijayaragavan.com>
+# Induja Vijayaragavan 
 #
 # Copyright
 # ---------
@@ -29,11 +29,6 @@
 # Copyright 2016 Induja Vijayaragavan, unless otherwise noted.
 #
 class vault_config {
-
-  require admin_dir_setup
-  require addrepo
-  require nodesetup::bind
-  require consul_ka
 
   $cdadmin_path = "/opt/cdadmin/bin"
 
@@ -47,9 +42,6 @@ class vault_config {
     mode    => '0755',
     notify  => Exec['run_unzip'],
     content => '#!/bin/bash
-export http_proxy=http://proxyserver.mutualofomaha.com:8080
-export proxy=http://proxyserver.mutualofomaha.com:8080
-echo "proxy=http://proxyserver.mutualofomaha.com:8080" >> /etc/yum.conf
 sudo yum -y install unzip
 export VAULT_ADDR=http://127.0.0.1:8200',
   } ->

@@ -4,12 +4,18 @@
   "author": "induja",
   "summary": "All vault configuration and setup files go here",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": null,
-  "issues_url": null,
+  "source": "https://github.com/induja0107/vault_setup.git",
+  "project_page": "https://forge.puppetlabs.com/induja/vault_setup",
+  "issues_url": "https://github.com/induja0107/induja0107-vault_setup/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem":"RedHat",
+        "operatingsystemrelease":[ "6.0", "7.0" ]
+      }
+   ],
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ],
-  "data_provider": null
+  "data_provider": hiera
 }
 
