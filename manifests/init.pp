@@ -1,4 +1,4 @@
-# Class: vault_config
+# Class: vault_setup
 # ===========================
 #
 # Installs vault and sets up the server configuration to connect to consul secret backend.
@@ -15,7 +15,7 @@
 # --------
 #
 # @example
-#    class { 'vault_config':
+#    class { 'vault_setup':
 #    }
 #
 # Authors
@@ -28,11 +28,26 @@
 #
 # Copyright 2016 Induja Vijayaragavan, unless otherwise noted.
 #
-class vault_config {
+class vault_setup {
 
   $cdadmin_path = "/opt/cdadmin/bin"
 
-  $vault_binary_file = "vault_0.6.2_linux_amd64.zip"
+  $vault_binary_file = "vault_0.6.3_linux_amd64.zip"
+
+  file { '/opt/cdadmin' :
+    ensure => 'directory',
+    mode   => '0755',
+    owner  => 'root',
+    group  => 'root',
+  } ->
+
+  file { '/opt/cdadmin/bin' :
+    ensure => 'directory',
+    mode   => '0755',
+    owner  => 'root',
+    group  => 'root',
+  } ->
+
 
   file {'unzip_install_script':
     ensure  => 'file',
@@ -55,7 +70,7 @@ export VAULT_ADDR=http://127.0.0.1:8200',
     ensure => 'present',
     owner  => 'nobody',
     group  => 'root',
-    source => "puppet:///modules/vault_config/$vault_binary_file",
+    source => "https://releases.hashicorp.com/vault/0.6.3/vault_0.6.3_linux_amd64.zip",
     mode   => '0755',
   } ->
 
@@ -70,6 +85,6 @@ export VAULT_ADDR=http://127.0.0.1:8200',
     mode    => '0644',
     owner   => 'root',
     group   => 'root',
-    content => template("vault_config/vault_server_config.erb"),
+    content => template("vault_setup/vault_server_config.erb"),
   }
 }
