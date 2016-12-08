@@ -30,9 +30,9 @@
 #
 class vault_setup {
 
-  $cdadmin_path = "/opt/cdadmin/bin"
+  $cdadmin_path = '/opt/cdadmin/bin'
 
-  $vault_binary_file = "vault_0.6.3_linux_amd64.zip"
+  $vault_binary_file = 'vault_0.6.3_linux_amd64.zip'
 
   file { '/opt/cdadmin' :
     ensure => 'directory',
@@ -70,12 +70,12 @@ export VAULT_ADDR=http://127.0.0.1:8200',
     ensure => 'present',
     owner  => 'nobody',
     group  => 'root',
-    source => "https://releases.hashicorp.com/vault/0.6.3/vault_0.6.3_linux_amd64.zip",
+    source => 'https://releases.hashicorp.com/vault/0.6.3/vault_0.6.3_linux_amd64.zip',
     mode   => '0755',
   } ->
 
   exec { 'install_vault':
-    command   => "sudo unzip $cdadmin_path/${vault_binary_file} -d /usr/bin && touch ${cdadmin_path}/one_time_install",
+    command   => "sudo unzip ${cdadmin_path}/${vault_binary_file} -d /usr/bin && touch ${cdadmin_path}/one_time_install",
     subscribe => File["${cdadmin_path}/${vault_binary_file}"],
     path      => '/usr/bin/:/bin/:/usr/local/bin/',
     creates   => "${cdadmin_path}/one_time_install",
@@ -85,6 +85,6 @@ export VAULT_ADDR=http://127.0.0.1:8200',
     mode    => '0644',
     owner   => 'root',
     group   => 'root',
-    content => template("vault_setup/vault_server_config.erb"),
+    content => template('vault_setup/vault_server_config.erb'),
   }
 }
