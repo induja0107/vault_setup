@@ -1,12 +1,12 @@
 {
   "name": "induja-vault_setup",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": "induja",
   "summary": "Sets up Vault with Consul as its secret backend",
   "license": "Apache-2.0",
   "source": "https://github.com/induja0107/vault_setup.git",
   "project_page": "https://forge.puppetlabs.com/induja/vault_setup",
-  "issues_url": "https://github.com/induja0107/induja0107-vault_setup/issues",
+  "issues_url": "https://github.com/induja0107/vault_setup/issues",
   "operatingsystem_support": [
     {
       "operatingsystem":"RedHat",
