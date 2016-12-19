@@ -2,7 +2,7 @@ backend "consul" {
   address = "127.0.0.1:8500"
   path = "vault/"
   scheme = "http"
-  token = "Enter your consul write ACL token here"
+  token = "<%= scope().call_function('hiera',['consul_write_token','']) %>"
   cluster_addr="http://127.0.0.1:8201"
 }
 listener "tcp" {

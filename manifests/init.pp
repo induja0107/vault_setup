@@ -5,18 +5,13 @@
 #
 # Parameters
 # ----------
-# None
+# $vault_binary_file - The binary file name for vault installation. Default: vault_0.6.4_linux_amd64.zip
+# $source_file - source file for vault installation. Default: 'https://releases.hashicorp.com/vault/0.6.4/vault_0.6.4_linux_amd64.zip' 
+# $cdadmin_path - The path for placing all the executables like vault-config.hcl, unzip_install.sh, vault_0.6.4_linux_amd64.zip, one_time_install. Default: '/opt/cdadmin/bin'
 #
 # Variables
 # ----------
-# $cdadmin_path, $vault_binary_file
-#
-# Examples
-# --------
-#
-# @example
-#    class { 'vault_setup':
-#    }
+# None 
 #
 # Authors
 # -------
@@ -28,11 +23,7 @@
 #
 # Copyright 2016 Induja Vijayaragavan, unless otherwise noted.
 #
-class vault_setup {
-
-  $cdadmin_path = '/opt/cdadmin/bin'
-
-  $vault_binary_file = 'vault_0.6.3_linux_amd64.zip'
+class vault_setup(String $vault_binary_file ='vault_0.6.4_linux_amd64.zip', String $source_file ='https://releases.hashicorp.com/vault/0.6.4/vault_0.6.4_linux_amd64.zip', String $cdadmin_path = '/opt/cdadmin/bin') {
 
   file { '/opt/cdadmin' :
     ensure => 'directory',
@@ -70,7 +61,7 @@ export VAULT_ADDR=http://127.0.0.1:8200',
     ensure => 'present',
     owner  => 'nobody',
     group  => 'root',
-    source => 'https://releases.hashicorp.com/vault/0.6.3/vault_0.6.3_linux_amd64.zip',
+    source =>  $source_file,
     mode   => '0755',
   } ->
 
