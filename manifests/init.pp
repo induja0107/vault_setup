@@ -23,7 +23,10 @@
 #
 # Copyright 2016 Induja Vijayaragavan, unless otherwise noted.
 #
-class vault_setup(String $vault_binary_file ='vault_0.6.4_linux_amd64.zip', String $source_file ='https://releases.hashicorp.com/vault/0.6.4/vault_0.6.4_linux_amd64.zip', String $cdadmin_path = '/opt/cdadmin/bin') {
+class vault_setup(
+  String $vault_binary_file ='vault_0.6.4_linux_amd64.zip', 
+  String $source_file ='https://releases.hashicorp.com/vault/0.6.4/vault_0.6.4_linux_amd64.zip', 
+  String $cdadmin_path = '/opt/cdadmin/bin') {
 
   file { '/opt/cdadmin' :
     ensure => 'directory',
