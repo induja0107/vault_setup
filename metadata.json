@@ -11,6 +11,7 @@
     {"name":"puppetlabs/stdlib","version_requirement":">= 3.2.0 < 5.0.0"},
     {"name":"stahnma/epel","version_requirement":">= 1.2.2"}
   ],
+  "data_provider": "hiera",
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
@@ -20,5 +21,5 @@
       ]
     }
   ]
-  "data_provider": "hiera"
 }
+
