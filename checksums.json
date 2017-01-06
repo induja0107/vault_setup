@@ -1,0 +1,15 @@
+{
+  "Gemfile": "36c376f27539ded2a321b2bd432e843b",
+  "Gemfile.lock": "a012f59685e5ca3a73a773b273ae03dc",
+  "README.md": "ae8ab969729afa84fdde853b5e709291",
+  "Rakefile": "f4692851f7e9afcdb02721319e3f18b9",
+  "examples/init.pp": "467570ae693164b0b7bdf2fae52ca1c9",
+  "files/secret-policy.hcl": "0ad7b50f290a5fb758e36d196f8373bd",
+  "files/vault-config.hcl": "077777f342af9fd9430b535f88733b6b",
+  "files/vault-server-start.sh": "e2b2b272f76459956ef96a8ee6a58be5",
+  "manifests/init.pp": "39a09592d65b38c020729a1f562b3ca9",
+  "metadata.json": "ab792109731b1463fc015d70f8e6cd44",
+  "spec/classes/init_spec.rb": "ab247b684600c70771df2e28d4603e75",
+  "spec/spec_helper.rb": "5b9ea22e8704677674eb55fcb9a4418d",
+  "templates/vault_server_config.erb": "c804c2dc9796c82714ac7eae29090675"
+}
